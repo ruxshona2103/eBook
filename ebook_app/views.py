@@ -2,21 +2,49 @@ from django.db import  models
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.pagination import PageNumberPagination
+from rest_framework import filters
+from rest_framework.permissions import IsAuthenticated
+from django_filters import rest_framework as django_filters
+
 
 from .models import Book, Review, Category
 from .serializers import BookSerializer, CategorySerializer, ReviewSerializer
+from .filters import BookFilter
+
+
+
+class CustomPagination(PageNumberPagination):
+    page_size = 3
+
 
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
 
+    pagination_class = CustomPagination
+
+
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
+    pagination_class = CustomPagination
+
+
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+
+    pagination_class = CustomPagination
+
+
+    filter_backends = [django_filters.DjangoFilterBackend, filters.SearchFilter]
+    filterset_class = BookFilter
+    search_fields = ['name', 'description']
+
+    permission_classes = [IsAuthenticated]
+
 
     def list(self, request, *args, **kwargs):
         category = request.query_params.get('category', None)
@@ -47,36 +75,9 @@ class BookViewSet(viewsets.ModelViewSet):
         if reviews.count() == 0:
             return Response({'average_rating':"No reviews yet!"})
 
-        avg_rating = sum([review.rating for review in reviews]) / reviews.counts
+        avg_rating = sum([review.rating for review in reviews]) / reviews.count()
 
         return Response({'average_rating': avg_rating})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
