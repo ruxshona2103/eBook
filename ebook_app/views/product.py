@@ -8,29 +8,14 @@ from rest_framework.permissions import IsAuthenticated
 from django_filters import rest_framework as django_filters
 
 
-from .models import Book, Review, Category
-from .serializers import BookSerializer, CategorySerializer, ReviewSerializer
-from .filters import BookFilter
+from ebook_app.models import Book, Review, Category
+from ebook_app.serializers import BookSerializer, CategorySerializer, ReviewSerializer
+from ebook_app.filters import BookFilter
 
 
 
 class CustomPagination(PageNumberPagination):
     page_size = 3
-
-
-class ReviewViewSet(viewsets.ModelViewSet):
-    queryset = Review.objects.all()
-    serializer_class = ReviewSerializer
-
-    pagination_class = CustomPagination
-
-
-class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-
-    pagination_class = CustomPagination
-
 
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()

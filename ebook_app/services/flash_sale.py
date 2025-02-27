@@ -27,7 +27,7 @@ class FlashSaleListCreateView(generics.ListCreateAPIView):
     serializer_class = FlashSaleSerializer
     pagination_class = CustomPagination
 
-    filter_backends = (django_filters.DjangoFilterBackend)
+    filter_backends = (django_filters.DjangoFilterBackend,)
     filterset_class = FlashSaleFilter
 
 

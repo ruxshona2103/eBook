@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Book, Review , BookViewHistory
+from ebook_app.models import Category, Book, Review , BookViewHistory
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,7 +17,7 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ['id', 'name', 'description', 'category', 'avg_rating', 'price']
+        fields = ['id', 'name', 'description', 'category', 'avg_rating', 'price', 'stock']
 
 
 class BookViewHistorySerializer(serializers.ModelSerializer):
