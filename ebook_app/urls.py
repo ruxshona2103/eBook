@@ -7,9 +7,9 @@ from ebook_app.services.flash_sale import FlashSaleListCreateView, check_flash_s
 from .services import admin_replenish_stock
 
 router= DefaultRouter()
-router.register(r'books', BookViewSet),
-router.register(r'reviews', ReviewViewSet),
-router.register(r'categories', CategoryViewSet),
+router.register(r'books', BookViewSet)
+router.register(r'reviews', ReviewViewSet)
+router.register(r'categories', CategoryViewSet)
 router.register(r'orders', OrderViewSet)
 
 
