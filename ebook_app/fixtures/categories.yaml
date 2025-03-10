@@ -1,0 +1,16 @@
+-   model: ebook_app.category
+    pk: 1
+    fields:
+      name: Turk adabiyoti
+-   model: ebook_app.category
+    pk: 2
+    fields:
+      name: Diniy kitoblar
+-   model: ebook_app.category
+    pk: 2
+    fields:
+      name: Ilmiy kitoblar
+-   model: ebook_app.category
+    pk: 2
+    fields:
+      name: Detektiv kitoblar
