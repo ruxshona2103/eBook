@@ -3,7 +3,7 @@ from rest_framework import views, status
 from rest_framework.response import Response
 import stripe
 from django.conf import settings
-from .models import Payment
+from billing.models import Payment
 from ebook_app.models import Order
 from .serializers import PaymentSerializer
 
