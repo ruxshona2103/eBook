@@ -56,4 +56,4 @@ class Order(models.Model):
         return new_status in allowed_transitions.get(self.status, [])
 
     def __str__(self):
-        return f"Ordered {self.book.name} by {self.customer.name}"
+        return f"Ordered {self.book.name} by {self.customer.username}"

@@ -10,7 +10,7 @@ def send_telegram_notification(order_id, book_name, quantity, customer_username,
     time.sleep(4)
     token= TELEGRAM_BOT_TOKEN
     method = 'sendMessage'
-    message_text = f"New Order : {order_id}\n Book {book_name}\nQuantity{quantity}\n"\
+    message_text = f"New Order : {order_id}\n Book {book_name}\nQuantity:{quantity}\n"\
                     f"Client: {customer_username}\n Phone_number {phone_number}"
 
     response = requests.post(
