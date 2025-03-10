@@ -1,3 +1,7 @@
 from django.contrib import admin
+from ebook_app.models import *
 
-# Register your models here.
+admin.site.register(Book)
+admin.site.register(Category)
+admin.site.register(Order)
+
